@@ -2,6 +2,12 @@ clear
 clc
 close all
 
+% Run main with do_toolkit = 1, 
+% save results_toolkit.mat
+% Then run main with do_toolkit = 0
+% save results_ale.mat
+% Finally, run this script to compare results
+
 
 load results_toolkit.mat
 
