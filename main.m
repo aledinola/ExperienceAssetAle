@@ -1,24 +1,8 @@
 %% Wage risk and spousal insurance
 % Author: Alessandro Di Nola
 % NOTE: It seems that VFI toolkit has a small mistake in the Distribution
-% code which leads to significant differences in the life-cycle profiles.
+% code which leads to some differences in the life-cycle profiles.
 % do_toolkit = 0 is the recommended value.
-% do_vfi_vec=0. Loop-based code on the CPU. Loops over z,d,h (but I still
-% vectorize over (a',a)). This is fast for small grids 
-% NA = 601 (large grid) 
-% Time (in secs) for VFI: 229.272519 
-% Time (in secs) for Distrib.: 5.817642 
-% Time (in secs) for Age profiles.: 1.628989
- 
-% do_vfi_vec=1. Vectorized over a',a,h on the GPU. (loops on z,d)
-% NA = 601 (large grid)
-% Time (in secs) for VFI: 96.942962 
-% Time (in secs) for Distrib.: 5.687087 
-% Time (in secs) for Age profiles.: 1.739354 
-
-% NOTE: On my laptop with 4GB of GPU RAM,
-% NA = 201: loops are faster and take approxim. 15 seconds
-% NA = 601: vec on GPU is faster 
 
 clear
 clc
@@ -184,11 +168,6 @@ end
 %mu_a = sum(StationaryDist,[2,3,4,5,6]);
 
 ages = Params.agejshifter+(1:Params.J);
-
-
-% Coefficient of variation for y_coh and c_coh
-%cv_c = stat_age.c_coh.StdDeviation./stat_age.c_coh.Mean;
-%cv_y = stat_age.y_coh.StdDeviation./max(stat_age.y_coh.Mean,1e-10);
 
 fprintf('Time (in secs) for VFI: %f \n',vf_time)
 fprintf('Time (in secs) for Distrib.: %f \n',time_distrib)
