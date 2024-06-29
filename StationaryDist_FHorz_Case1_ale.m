@@ -50,7 +50,8 @@ for j=2:N_j
         d_val = d_grid(d_c);
         h_val = h_grid(h_c);
         hprime_val = f_HC_accum(d_val,h_val,age_j,xi_1,xi_2,del_h,h_l);
-        [ind_l,weight_l] = find_loc(h_grid,hprime_val);
+        % Changed to find_loc_vec2, which uses discretize function
+        [ind_l,weight_l] = find_loc_vec2(h_grid,hprime_val);
         ind_r    = ind_l+1;
         weight_r = 1-weight_l;
         for zp_c=1:n_z
